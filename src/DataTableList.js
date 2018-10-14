@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios/index";
+import './DataTableList.css';
 
 
 class DataTableList extends Component {
@@ -41,17 +42,16 @@ class DataTableList extends Component {
     }
 
     render() {
-
         return (
            <div className="container">
                 <div className="row">
                     <div>
-                        <table className="table table-bordered table-hover">
+                        <table className="table table-striped table-bordered">
                             <thead>
                             <tr>
-                                <td>Country Code</td>
-                                <td>Country Name</td>
-                                <td>Store Status</td>
+                                <th>Country Code</th>
+                                <th>Country Name</th>
+                                <th>Store Status</th>
                             </tr>
                             </thead>
                             <tbody>
