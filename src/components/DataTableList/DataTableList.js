@@ -21,17 +21,17 @@ class DataTableList extends Component {
             .get(proxyUrl + targetUrl)
             .then(response => {
                 let responseArray = [];
-                let obj = response.data;
-                for (let prop in obj) {
-                    if (obj.hasOwnProperty(prop)) {
-                        let infoObject = {
-                            countryCode: prop,
-                            countryName: obj[prop].name,
-                            countryStatus: obj[prop].status
-                        };
-                        responseArray.push(infoObject);
-                    }
-                }
+                let fetchedData = response.data;
+                const keys = Object.keys(fetchedData);
+                keys.forEach((key) => {
+                    const nestedObject = fetchedData[key];
+                    const infoObject = {
+                        countryCode: key,
+                        countryName: nestedObject.name,
+                        countryStatus: nestedObject.status
+                    };
+                    responseArray.push(infoObject);
+                });
                 this.setState({
                     data: responseArray
                 });
@@ -51,7 +51,7 @@ class DataTableList extends Component {
                             <tr>
                                 <th>Country Code</th>
                                 <th>Country Name</th>
-                                <th>Store Status</th>
+                                <th>Store Down</th>
                             </tr>
                             </thead>
                             <tbody>
